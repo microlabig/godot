@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=3]
+
+[node name="main" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 375, 385 )
+
+[node name="enemy" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 269.094, 278.865 )
+transform/rot = 78.5236
+decceleration = 0.5
+
+

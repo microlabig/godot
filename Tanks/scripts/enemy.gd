@@ -39,7 +39,7 @@ func _fixed_process( delta ):
 	else:
 		pass
 		move_enemy(speed, delta)
-		print("speed= ",speed," cs= ",current_speed)
+		#print("speed= ",speed," cs= ",current_speed)
 	#print("mass = ", get_mass()," cur_speed = ", current_speed, " linear_damp = ", linear_damp)
 	#print("g_lv = ", get_linear_velocity())	
 	pass
@@ -89,12 +89,12 @@ func shoot(delta):
 	sm.set_scale(Vector2(0.7,0.7))
 	sm.play()
 	# отдача от стрельбы и установка скорости
-	var impulse = -Vector2((get_node("gun/muzzle").get_global_pos()-get_global_pos()))		
+	var impulse = -Vector2((get_node("gun/muzzle").get_global_pos()-get_global_pos())).rotated(-get_rot())		
 	var ang = gun.current_rot 
 	impulse *= cos(ang)
 	current_speed += impulse.y*cos(ang)	
+	apply_impulse(Vector2(0,0),impulse)	
 	set_linear_velocity(Vector2(0,current_speed).rotated(get_rot()))		
-	apply_impulse(Vector2(0,0),impulse)		
 	#shoot_sound.play("gun")
 	pass
 	
